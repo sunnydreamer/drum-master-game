@@ -1,19 +1,27 @@
 import Don, { Ka, Ballon } from "/src/drums.js";
+import Sensor from "/src/sensor.js";
+import InputHandlder from "/src/input.js";
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
 
-// let note = new Don();
+// add input handler
 
-// let note1 = new Ka();
-// let note2 = new Ballon();
+let input = new InputHandlder();
 
-// let notes = [note, note1];
+// set game width and height
+
+const GAME_WIDTH = 1000;
+const GAME_HEIGHT = 300;
+
+// define my drum
+
+let sensor = new Sensor(GAME_WIDTH, GAME_HEIGHT);
 
 let beatPoints = [
-  { time: 1000, play: new Don() },
-  { time: 5000, play: new Ka() },
-  { time: 8000, play: new Ballon() },
+  { time: 1000, note: new Don() },
+  { time: 5000, note: new Ka() },
+  { time: 8000, note: new Ballon() },
 ];
 
 // game frame
@@ -23,17 +31,43 @@ function gameLoop(timestamp) {
   let dt = timestamp - lastTime;
   lastTime = timestamp;
 
-  ctx.clearRect(0, 0, 1000, 1000);
+  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-  console.log(timestamp);
-  console.log(beatPoints[0].time);
+  //draw my drum(sensor)
+  sensor.draw(ctx);
+
+  //   console.log(timestamp);
+  //   console.log(beatPoints[0].time);
 
   // loop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+  let drumPlay = "none";
   for (let i = 0; i < beatPoints.length; i++) {
     if (timestamp >= beatPoints[i].time) {
-      beatPoints[i].play.draw(ctx);
-      beatPoints[i].play.update(dt);
+      //   console.log(beatPoints[0].note.position.x);
+      beatPoints[i].note.draw(ctx);
+      beatPoints[i].note.update(dt);
+
+      //   console.log(sensor.position.x);
+      //   console.log(beatPoints[0].note.position.x);
+
+      if (
+        beatPoints[i].note.position.x + 100 >= sensor.position.x &&
+        beatPoints[i].note.position.x <= sensor.position.x + sensor.width
+      ) {
+        if (beatPoints[i].note.name === "Don") {
+          drumPlay = "drumSkin";
+        } else if (beatPoints[i].note.name === "Ka") {
+          drumPlay = "drumEdge";
+        } else if (beatPoints[i].note.name === "Balloon") {
+          drumPlay = "balloon";
+        }
+      }
+    }
+
+    // hit right
+
+    if (input.currentPlay === drumPlay && drumPlay != "none") {
+      console.log("you hit right!");
     }
   }
 

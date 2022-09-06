@@ -1,5 +1,6 @@
 export default class Don {
   constructor() {
+    this.name = "Don";
     this.size = 100;
     this.position = {
       x: -100,
@@ -13,12 +14,14 @@ export default class Don {
   }
 
   update(dt) {
-    this.position.x += 10 / dt;
+    this.position.x += 50 / dt;
   }
+  disappear(ctx) {}
 }
 
 export class Ka {
   constructor() {
+    this.name = "Ka";
     this.size = 100;
     this.position = {
       x: -100,
@@ -32,12 +35,13 @@ export class Ka {
   }
 
   update(dt) {
-    this.position.x += 10 / dt;
+    this.position.x += 50 / dt;
   }
 }
 
 export class Ballon {
   constructor() {
+    this.name = "Balloon";
     this.size = 100;
     this.position = {
       x: -100,
@@ -51,6 +55,6 @@ export class Ballon {
   }
 
   update(dt) {
-    this.position.x += 10 / dt;
+    this.position.x += 50 / dt;
   }
 }
