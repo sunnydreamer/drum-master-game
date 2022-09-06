@@ -17,6 +17,9 @@ export default class InputHandlder {
           // case "Escape":
           //   console.log("pause");
           //   break;
+          case " ":
+            this.currentPlay = "space";
+            break;
           case "ArrowUp":
             this.currentPlay = "balloon";
             break;

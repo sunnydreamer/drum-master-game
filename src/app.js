@@ -25,8 +25,17 @@ let beatPoints = [
   { time: 8000, note: new Ballon(), isLock: false },
 ];
 
+const GAMESTATE = {
+  PAUSED: 0,
+  RUNNING: 1,
+  MENU: 2,
+  GAMEOVER: 3,
+  NEWLEVEL: 4,
+};
+
 // game frame
 let lastTime = 0;
+let currentState = GAMESTATE.MENU;
 
 function gameLoop(timestamp) {
   let dt = timestamp - lastTime;
@@ -34,62 +43,79 @@ function gameLoop(timestamp) {
 
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-  //draw my drum(sensor)
-  sensor.draw(ctx);
+  // ---------------------------------------------game menu----------------------------------
 
-  //   console.log(timestamp);
-  //   console.log(beatPoints[0].time);
+  if (currentState === 2) {
+    // draw menu
+    ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
+    ctx.fill();
 
-  // loop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "White";
+    ctx.textAlign = "center";
+    ctx.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
+    // trigger game start
 
-  for (let i = 0; i < beatPoints.length; i++) {
-    let drumPlay = "none";
-    if (timestamp >= beatPoints[i].time) {
-      beatPoints[i].note.draw(ctx);
-      beatPoints[i].note.update(dt);
+    if (input.currentPlay === "space") {
+      currentState = 1;
+    }
+  }
 
-      //   console.log(sensor.position.x);
-      //   console.log(beatPoints[0].note.position.x);
+  // ---------------------------------------------game start----------------------------------
+  else if (currentState === 1) {
+    //draw my drum(sensor)
+    sensor.draw(ctx);
 
-      if (
-        beatPoints[i].note.position.x + 100 >= sensor.position.x &&
-        beatPoints[i].note.position.x <= sensor.position.x + sensor.width
-      ) {
-        if (beatPoints[i].note.name === "Don") {
-          drumPlay = "drumSkin";
-        } else if (beatPoints[i].note.name === "Ka") {
-          drumPlay = "drumEdge";
-        } else if (beatPoints[i].note.name === "Balloon") {
-          drumPlay = "balloon";
-        }
+    //   console.log(timestamp);
+    //   console.log(beatPoints[0].time);
 
-        // hit the right drum!
-        if (input.currentPlay === drumPlay && drumPlay != "none") {
-          if (beatPoints[i].isLock === false) {
-            console.log("you hit right!");
-            drumPlay = "none";
-            // make correct hit disappear
-            beatPoints[i].note.size = 0;
-            document.getElementById("scoreNum").innerHTML =
-              parseInt(document.getElementById("scoreNum").innerHTML) + 1;
+    // loop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            beatPoints[i].isLock = true;
+    for (let i = 0; i < beatPoints.length; i++) {
+      let drumPlay = "none";
+      if (timestamp >= beatPoints[i].time) {
+        beatPoints[i].note.draw(ctx);
+        beatPoints[i].note.update(dt);
+
+        if (
+          beatPoints[i].note.position.x + 100 >= sensor.position.x &&
+          beatPoints[i].note.position.x <= sensor.position.x + sensor.width
+        ) {
+          if (beatPoints[i].note.name === "Don") {
+            drumPlay = "drumSkin";
+          } else if (beatPoints[i].note.name === "Ka") {
+            drumPlay = "drumEdge";
+          } else if (beatPoints[i].note.name === "Balloon") {
+            drumPlay = "balloon";
+          }
+
+          // hit the right drum!
+          if (input.currentPlay === drumPlay && drumPlay != "none") {
+            if (beatPoints[i].isLock === false) {
+              console.log("you hit right!");
+              drumPlay = "none";
+              // make correct hit disappear
+              beatPoints[i].note.size = 0;
+              document.getElementById("scoreNum").innerHTML =
+                parseInt(document.getElementById("scoreNum").innerHTML) + 1;
+
+              beatPoints[i].isLock = true;
+            }
           }
         }
-      }
 
-      // miss the drum
-      if (
-        beatPoints[i].note.position.x >= GAME_WIDTH &&
-        beatPoints[i].isLock === false
-      ) {
-        console.log("miss");
-        document.getElementById("lifeNum").innerHTML =
-          parseInt(document.getElementById("lifeNum").innerHTML) - 1;
-        beatPoints[i].isLock = true;
+        // miss the drum
+        if (
+          beatPoints[i].note.position.x >= GAME_WIDTH &&
+          beatPoints[i].isLock === false
+        ) {
+          console.log("miss");
+          document.getElementById("lifeNum").innerHTML =
+            parseInt(document.getElementById("lifeNum").innerHTML) - 1;
+          beatPoints[i].isLock = true;
+        }
       }
-
-      //   console.log(beatPoints[i].isLock);
     }
   }
 
