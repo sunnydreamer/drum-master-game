@@ -14,9 +14,9 @@ export default class InputHandlder {
           case "ArrowRight":
             this.currentPlay = "drumEdge";
             break;
-          // case "Escape":
-          //   console.log("pause");
-          //   break;
+          case "Escape":
+            this.currentPlay = "escape";
+            break;
           case " ":
             this.currentPlay = "space";
             break;

@@ -16,6 +16,10 @@ export default class Don {
   update(dt) {
     this.position.x += 50 / dt;
   }
+
+  reset() {
+    this.position.x = -100;
+  }
 }
 
 export class Ka {
@@ -36,6 +40,10 @@ export class Ka {
   update(dt) {
     this.position.x += 50 / dt;
   }
+
+  reset() {
+    this.position.x = -100;
+  }
 }
 
 export class Ballon {
@@ -55,5 +63,9 @@ export class Ballon {
 
   update(dt) {
     this.position.x += 50 / dt;
+  }
+
+  reset() {
+    this.position.x = -100;
   }
 }
