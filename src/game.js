@@ -5,3 +5,7 @@ const GAMESTATE = {
   GAMEOVER: 3,
   NEWLEVEL: 4,
 };
+
+export default class Game {
+  constructor() {}
+}

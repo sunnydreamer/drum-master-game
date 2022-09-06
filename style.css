@@ -1,3 +1,15 @@
 #gameScreen {
   border: solid black 1px;
 }
+
+.scoreBoard {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+}
+
+.goal {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+}

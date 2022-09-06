@@ -1,6 +1,7 @@
 import Don, { Ka, Ballon } from "/src/drums.js";
 import Sensor from "/src/sensor.js";
 import InputHandlder from "/src/input.js";
+import Game from "/src/game.js";
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
@@ -19,9 +20,9 @@ const GAME_HEIGHT = 300;
 let sensor = new Sensor(GAME_WIDTH, GAME_HEIGHT);
 
 let beatPoints = [
-  { time: 1000, note: new Don() },
-  { time: 5000, note: new Ka() },
-  { time: 8000, note: new Ballon() },
+  { time: 1000, note: new Don(), isLock: false },
+  { time: 5000, note: new Ka(), isLock: false },
+  { time: 8000, note: new Ballon(), isLock: false },
 ];
 
 // game frame
@@ -40,10 +41,10 @@ function gameLoop(timestamp) {
   //   console.log(beatPoints[0].time);
 
   // loop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  let drumPlay = "none";
+
   for (let i = 0; i < beatPoints.length; i++) {
+    let drumPlay = "none";
     if (timestamp >= beatPoints[i].time) {
-      //   console.log(beatPoints[0].note.position.x);
       beatPoints[i].note.draw(ctx);
       beatPoints[i].note.update(dt);
 
@@ -61,13 +62,22 @@ function gameLoop(timestamp) {
         } else if (beatPoints[i].note.name === "Balloon") {
           drumPlay = "balloon";
         }
+
+        // hit the right drum!
+        if (input.currentPlay === drumPlay && drumPlay != "none") {
+          if (beatPoints[i].isLock === false) {
+            console.log("you hit right!");
+            drumPlay = "none";
+            // make correct hit disappear
+            beatPoints[i].note.size = 0;
+            document.getElementById("scoreNum").innerHTML =
+              parseInt(document.getElementById("scoreNum").innerHTML) + 1;
+
+            beatPoints[i].isLock = true;
+          }
+        }
       }
-    }
-
-    // hit right
-
-    if (input.currentPlay === drumPlay && drumPlay != "none") {
-      console.log("you hit right!");
+      //   console.log(beatPoints[i].isLock);
     }
   }
 

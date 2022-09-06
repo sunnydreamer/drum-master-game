@@ -7,6 +7,7 @@ export default class InputHandlder {
         switch (event.key) {
           case "ArrowLeft":
             this.currentPlay = "drumSkin";
+
             // console.log(this.currentPlay);
 
             break;

@@ -16,7 +16,6 @@ export default class Don {
   update(dt) {
     this.position.x += 50 / dt;
   }
-  disappear(ctx) {}
 }
 
 export class Ka {
