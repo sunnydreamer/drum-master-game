@@ -4,7 +4,7 @@ export default class Don {
     this.size = 100;
     this.position = {
       x: -100,
-      y: 20,
+      y: 150,
     };
   }
 
@@ -28,7 +28,7 @@ export class Ka {
     this.size = 100;
     this.position = {
       x: -100,
-      y: 20,
+      y: 150,
     };
   }
 
@@ -52,7 +52,7 @@ export class Ballon {
     this.size = 100;
     this.position = {
       x: -100,
-      y: 20,
+      y: 50,
     };
   }
 

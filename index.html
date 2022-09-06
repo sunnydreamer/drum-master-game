@@ -10,20 +10,70 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="scoreBoard">
-      <div class="scoreItem">Score:</div>
-      <div class="scoreItem" id="scoreNum">0</div>
-    </div>
-    <div class="goal">
-      <div class="goalItem">Goal:</div>
-      <div class="goalItem" id="goalNum">20</div>
-    </div>
-    <div class="life">
-      <div class="lifeItem">Life:</div>
-      <div class="lifeItem" id="lifeNum">3</div>
+    <div class="gameName">Drum Master</div>
+
+    <!--------------------------------- Play One-------------------------------------------------->
+    <div class="player">
+      <div class="playerTitle">
+        <class class="playerID">Player1</class>
+        <class class="playerPic">
+          <img
+            src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+            alt=""
+            id="player1Pic"
+          />
+        </class>
+        <class class="playerName">Yoshi</class>
+      </div>
+
+      <canvas id="gameScreen" width="1000" height="300"></canvas>
+      <class class="playerStatus">
+        <div class="goal">
+          <div class="goalItem">Goal:</div>
+          <div class="goalItem" id="goalNum">20</div>
+        </div>
+        <div class="scoreBoard">
+          <div class="scoreItem">Score:</div>
+          <div class="scoreItem" id="scoreNum">0</div>
+        </div>
+        <div class="life">
+          <div class="lifeItem">Life:</div>
+          <div class="lifeItem" id="lifeNum">3</div>
+        </div>
+      </class>
     </div>
 
-    <canvas id="gameScreen" width="1000" height="300"></canvas>
+    <!--------------------------------- Play two-------------------------------------------------->
+    <!-- TO DO -->
+    <!-- <div class="player">
+      <div class="playerTitle">
+        <class class="playerID">Player2</class>
+        <class class="playerPic">
+          <img
+            src="http://purepng.com/public/uploads/large/purepng.com-super-mariomariosuper-mariovideo-gamefictional-characternintendoshigeru-miyamotomario-franchise-17015286383789a9am.png"
+            alt=""
+            id="player1Pic"
+          />
+        </class>
+        <class class="playerName">Mario</class>
+      </div>
+
+      <canvas id="gameScreen" width="1000" height="300"></canvas>
+      <class class="playerStatus">
+        <div class="goal">
+          <div class="goalItem">Goal:</div>
+          <div class="goalItem" id="goalNum">20</div>
+        </div>
+        <div class="scoreBoard">
+          <div class="scoreItem">Score:</div>
+          <div class="scoreItem" id="scoreNum">0</div>
+        </div>
+        <div class="life">
+          <div class="lifeItem">Life:</div>
+          <div class="lifeItem" id="lifeNum">3</div>
+        </div>
+      </class>
+    </div> -->
 
     <script type="module" src="/src/app.js"></script>
   </body>

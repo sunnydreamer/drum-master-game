@@ -1,21 +1,81 @@
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.gameName {
+  font-size: 50px;
+  text-align: center;
+  padding: 10px;
+}
+
 #gameScreen {
   border: solid black 1px;
 }
 
+.player {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: pink solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+.playerTitle {
+  /* border: solid blue; */
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playerID {
+  /* border: yellow solid; */
+  font-size: 20px;
+  margin: 10px;
+}
+
+.playerName {
+  font-size: 40px;
+}
+.playerStatus {
+  /* border: solid green; */
+  width: 20%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .scoreBoard {
   display: flex;
-  width: 95%;
+  /* border: solid pink; */
   justify-content: center;
+  align-items: center;
+  height: 50%;
+  font-size: 40px;
 }
 
 .goal {
   display: flex;
-  width: 95%;
+  /* border: solid orange; */
   justify-content: center;
+  align-items: center;
+  height: 30%;
+  font-size: 25px;
 }
 
 .life {
   display: flex;
-  width: 95%;
   justify-content: center;
+  align-items: center;
+  /* border: solid purple; */
+  height: 40%;
+  font-size: 25px;
+}
+
+#player1Pic {
+  width: 50%;
+  margin: 0 30%;
+
+  /* border: solid green;
+  border-radius: 50%; */
 }
