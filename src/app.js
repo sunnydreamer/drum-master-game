@@ -77,6 +77,18 @@ function gameLoop(timestamp) {
           }
         }
       }
+
+      // miss the drum
+      if (
+        beatPoints[i].note.position.x >= GAME_WIDTH &&
+        beatPoints[i].isLock === false
+      ) {
+        console.log("miss");
+        document.getElementById("lifeNum").innerHTML =
+          parseInt(document.getElementById("lifeNum").innerHTML) - 1;
+        beatPoints[i].isLock = true;
+      }
+
       //   console.log(beatPoints[i].isLock);
     }
   }
