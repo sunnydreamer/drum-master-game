@@ -35,10 +35,12 @@ const singlePlayerStart = () => {
 
 singlePlayerChoice.addEventListener("click", singlePlayerStart);
 
-// import music
+// import music and effect
 const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
 gameMusic.volume = 0.08;
 gameMusic.loop = true;
+const gameover = new Audio("/assets/music/gameover.mp3");
+gameover.volume = 0.1;
 
 // add input handler
 
@@ -155,6 +157,14 @@ function gameLoop(timestamp) {
       GAME_HEIGHT / 2
     );
 
+    //reset beatPoints
+
+    beatPoints.forEach((element) => {
+      element.note.isLock = false;
+      element.note.position.x = -100;
+    });
+    // console.log(beatPoints);
+
     // reset time
 
     // trigger game start
@@ -164,16 +174,25 @@ function gameLoop(timestamp) {
       input.currentPlay = "none";
       // reset game start time
       gameStart = timestamp;
-
       // reset life points
-      document.getElementById("lifeNum").innerHTML = 3;
+      document.getElementById("lifeNum").innerHTML = 5;
+      console.log(document.getElementById("lifeNum").innerHTML);
+      //clear canvas
+      ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+      // reset beatPoints lock
+      for (let i = 0; i < beatPoints.length; i++) {
+        beatPoints[i].isLock = false;
+      }
     }
   }
   // ---------------------------------------------game start:one player----------------------------------
   else if (currentState === 1) {
+    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     //music play
     gameMusic.play();
     // game reset
+
     if (input.currentPlay === "escape") {
       currentState = 2;
       input.currentPlay = "none";
@@ -239,6 +258,7 @@ function gameLoop(timestamp) {
             parseInt(document.getElementById("lifeNum").innerHTML) - 1;
           if (parseInt(document.getElementById("lifeNum").innerHTML) === 0) {
             currentState = 3;
+            gameover.play();
           }
           beatPoints[i].isLock = true;
         }

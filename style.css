@@ -6,6 +6,7 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-image: url("/assets/images/gamestart.jpg");
   background-size: cover;
+  cursor: default;
 }
 
 .header {
@@ -191,4 +192,9 @@ body {
 
   /* border: solid green; */
   border-radius: 50%;
+  cursor: cell;
+}
+
+#player1Pic:hover {
+  background-color: rgb(140, 192, 209);
 }
