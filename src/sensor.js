@@ -9,7 +9,7 @@ export default class Sensor {
   }
 
   draw(ctx) {
-    ctx.fillStyle = "orange";
+    ctx.fillStyle = "#e63946";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }

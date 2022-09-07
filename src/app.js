@@ -7,18 +7,42 @@ import Game from "/src/game.js";
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
 
-// import music and sound
-const gameMusic = new Audio("/assets/music/ButterFly.mp3");
+// set game width and height
+const GAME_WIDTH = 1000;
+const GAME_HEIGHT = 300;
+
+// Set up Game State
+const GAMESTATE = {
+  PAUSED: 0,
+  RUNNING: 1,
+  MENU: 2,
+  GAMEOVER: 3,
+  STANDBY: 4,
+};
+
+// Define starting game state
+let currentState = GAMESTATE.MENU;
+
+// get dom sections
+let singlePlayerChoice = document.getElementById("player1");
+let player1 = document.querySelector(".player1");
+let playerSelection = document.querySelector(".playerSelection");
+
+// Menu function
+const singlePlayerStart = () => {
+  currentState = 4;
+};
+
+singlePlayerChoice.addEventListener("click", singlePlayerStart);
+
+// import music
+const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
 gameMusic.volume = 0.08;
+gameMusic.loop = true;
 
 // add input handler
 
 let input = new InputHandlder();
-
-// set game width and height
-
-const GAME_WIDTH = 1000;
-const GAME_HEIGHT = 300;
 
 // define my drum
 
@@ -26,21 +50,11 @@ let sensor = new Sensor(GAME_WIDTH, GAME_HEIGHT);
 
 let beatPoints = [];
 
-const GAMESTATE = {
-  PAUSED: 0,
-  RUNNING: 1,
-  MENU: 2,
-  GAMEOVER: 3,
-  NEWLEVEL: 4,
-};
-
 // game frame
 let lastTime = 0;
 let gameStart = null;
 let progress = null;
 let pauseProgress = null;
-
-let currentState = GAMESTATE.MENU;
 
 // -----------------------------------------------start game loop -----------------------------------
 
@@ -53,9 +67,29 @@ function gameLoop(timestamp) {
   // ---------------------------------------------game menu----------------------------------
 
   if (currentState === 2) {
+    //change background
+
+    document.body.style.backgroundImage = "url('/assets/images/menu.png')";
+
+    // draw menu
+  }
+
+  // ---------------------------------------------standby:player1----------------------------------
+
+  if (currentState === 4) {
+    //change background
+    playerSelection.style.display = "none";
+
+    //change background
+    document.body.style.backgroundImage = "url('/assets/images/gamestart.jpg')";
+
+    //show players
+    player1.style.display = "block";
+    // console.log(beatPoints);
+
     // draw menu
     ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    ctx.fillStyle = "rgba(0,0,0,0.4)";
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
     ctx.fill();
 
     ctx.font = "30px Arial";
@@ -83,7 +117,7 @@ function gameLoop(timestamp) {
     gameMusic.pause();
     // draw menu
     ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    ctx.fillStyle = "rgba(0,1,0,0.4)";
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
     ctx.fill();
 
     ctx.font = "30px Arial";
@@ -109,7 +143,7 @@ function gameLoop(timestamp) {
     gameMusic.pause();
     gameMusic.currentTime = 0;
     ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    ctx.fillStyle = "rgba(233,0,0,0.4)";
+    ctx.fillStyle = "rgba(233,0,0,0.2)";
     ctx.fill();
 
     ctx.font = "30px Arial";
@@ -135,10 +169,8 @@ function gameLoop(timestamp) {
       document.getElementById("lifeNum").innerHTML = 3;
     }
   }
-  // ---------------------------------------------game start----------------------------------
+  // ---------------------------------------------game start:one player----------------------------------
   else if (currentState === 1) {
-    // console.log(beatPoints);
-
     //music play
     gameMusic.play();
     // game reset

@@ -1,3 +1,5 @@
+let speed = 51.9;
+
 export default class Don {
   constructor() {
     this.name = "Don";
@@ -6,15 +8,16 @@ export default class Don {
       x: -100,
       y: 150,
     };
+    this.speed = speed;
   }
 
   draw(ctx) {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "orange";
     ctx.fillRect(this.position.x, this.position.y, this.size, this.size);
   }
 
   update(dt) {
-    this.position.x += 50 / dt;
+    this.position.x += this.speed / dt;
   }
 
   reset() {
@@ -30,15 +33,16 @@ export class Ka {
       x: -100,
       y: 150,
     };
+    this.speed = speed;
   }
 
   draw(ctx) {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "#2a9d8f";
     ctx.fillRect(this.position.x, this.position.y, this.size, this.size);
   }
 
   update(dt) {
-    this.position.x += 50 / dt;
+    this.position.x += this.speed / dt;
   }
 
   reset() {
@@ -54,15 +58,16 @@ export class Ballon {
       x: -100,
       y: 50,
     };
+    this.speed = speed;
   }
 
   draw(ctx) {
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = "Purple";
     ctx.fillRect(this.position.x, this.position.y, this.size, this.size);
   }
 
   update(dt) {
-    this.position.x += 50 / dt;
+    this.position.x += this.speed / dt;
   }
 
   reset() {

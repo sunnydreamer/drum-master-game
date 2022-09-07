@@ -10,12 +10,68 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="gameName">Drum Master</div>
+    <div class="header">
+      <img src="/assets/images/logo.png" alt="" class="gameLogo" />
+      <div class="englishName">DRUM MASTER</div>
+    </div>
+
+    <!--------------------------------- Menu-------------------------------------------------->
+
+    <div class="playerSelection">
+      <!-- single player -->
+      <div class="playerCard" id="player1">
+        <div class="playerModePic">
+          <img src="/assets/images/single.png" alt="" id="singlePic" />
+        </div>
+        <div class="playerModeDesc">1 Player</div>
+      </div>
+      <div class="playerCard" id="player2">
+        <div class="playerModePic">
+          <img src="/assets/images/twoplayer.png" alt="" id="twoPlayerPic" />
+        </div>
+        <div class="playerModeDesc">2 Players</div>
+      </div>
+    </div>
 
     <!--------------------------------- Play One-------------------------------------------------->
-    <div class="player">
+    <div class="player1">
+      <div class="player">
+        <div class="playerTitle">
+          <class class="playerPic">
+            <img
+              src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+              alt=""
+              id="player1Pic"
+            />
+          </class>
+          <class class="playerName">Yoshi</class>
+          <class class="playerID">Player1</class>
+        </div>
+
+        <canvas id="gameScreen" width="1000" height="300"></canvas>
+        <class class="playerStatus">
+          <div class="goal">
+            <div class="goalItem">Goal:</div>
+            <div class="goalItem" id="goalNum">12</div>
+          </div>
+          <div class="scoreBoard">
+            <div class="scoreItem">Score:</div>
+            <div class="scoreItem" id="scoreNum">0</div>
+          </div>
+          <div class="life">
+            <div class="lifeItem">
+              <img src="/assets/images/heart.png" alt="" class="heart" />
+            </div>
+            <div class="lifeItem" id="lifeNum">5</div>
+          </div>
+        </class>
+      </div>
+    </div>
+
+    <!--------------------------------- Play two-------------------------------------------------->
+    <!-- TO DO -->
+    <!-- <div class="player">
       <div class="playerTitle">
-        <class class="playerID">Player1</class>
         <class class="playerPic">
           <img
             src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
@@ -24,38 +80,7 @@
           />
         </class>
         <class class="playerName">Yoshi</class>
-      </div>
-
-      <canvas id="gameScreen" width="1000" height="300"></canvas>
-      <class class="playerStatus">
-        <div class="goal">
-          <div class="goalItem">Goal:</div>
-          <div class="goalItem" id="goalNum">20</div>
-        </div>
-        <div class="scoreBoard">
-          <div class="scoreItem">Score:</div>
-          <div class="scoreItem" id="scoreNum">0</div>
-        </div>
-        <div class="life">
-          <div class="lifeItem">Life:</div>
-          <div class="lifeItem" id="lifeNum">3</div>
-        </div>
-      </class>
-    </div>
-
-    <!--------------------------------- Play two-------------------------------------------------->
-    <!-- TO DO -->
-    <!-- <div class="player">
-      <div class="playerTitle">
-        <class class="playerID">Player2</class>
-        <class class="playerPic">
-          <img
-            src="http://purepng.com/public/uploads/large/purepng.com-super-mariomariosuper-mariovideo-gamefictional-characternintendoshigeru-miyamotomario-franchise-17015286383789a9am.png"
-            alt=""
-            id="player1Pic"
-          />
-        </class>
-        <class class="playerName">Mario</class>
+        <class class="playerID">Player1</class>
       </div>
 
       <canvas id="gameScreen" width="1000" height="300"></canvas>
