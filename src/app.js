@@ -18,6 +18,7 @@ const GAMESTATE = {
   MENU: 2,
   GAMEOVER: 3,
   STANDBY: 4,
+  SUMMARY: 5,
 };
 
 // Define starting game state
@@ -27,6 +28,7 @@ let currentState = GAMESTATE.MENU;
 let singlePlayerChoice = document.getElementById("player1");
 let player1 = document.querySelector(".player1");
 let playerSelection = document.querySelector(".playerSelection");
+let leaderBoard = document.querySelector(".leaderBoard");
 
 // Menu function
 const singlePlayerStart = () => {
@@ -70,20 +72,15 @@ function gameLoop(timestamp) {
 
   if (currentState === 2) {
     //change background
-
-    document.body.style.backgroundImage = "url('/assets/images/menu.png')";
-
     // draw menu
+    document.querySelector(".menu").style.display = "block";
   }
 
   // ---------------------------------------------standby:player1----------------------------------
 
   if (currentState === 4) {
     //change background
-    playerSelection.style.display = "none";
-
-    //change background
-    document.body.style.backgroundImage = "url('/assets/images/gamestart.jpg')";
+    document.querySelector(".menu").style.display = "none";
 
     //show players
     player1.style.display = "block";
@@ -98,8 +95,6 @@ function gameLoop(timestamp) {
     ctx.fillStyle = "White";
     ctx.textAlign = "center";
     ctx.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
-
-    // reset time
 
     // trigger game start
 
@@ -186,6 +181,21 @@ function gameLoop(timestamp) {
       }
     }
   }
+  // ---------------------------------------------game summary----------------------------------
+
+  if (currentState === 5) {
+    gameMusic.pause();
+    gameMusic.currentTime = 0;
+
+    //reset beatPoints
+
+    beatPoints.forEach((element) => {
+      element.note.isLock = false;
+      element.note.position.x = -100;
+    });
+
+    leaderBoard.style.display = "block";
+  }
   // ---------------------------------------------game start:one player----------------------------------
   else if (currentState === 1) {
     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
@@ -257,12 +267,20 @@ function gameLoop(timestamp) {
           document.getElementById("lifeNum").innerHTML =
             parseInt(document.getElementById("lifeNum").innerHTML) - 1;
           if (parseInt(document.getElementById("lifeNum").innerHTML) === 0) {
-            currentState = 3;
             gameover.play();
           }
           beatPoints[i].isLock = true;
         }
       }
+    }
+
+    // detect lose
+
+    if (beatPoints[beatPoints.length - 1].isLock === true) {
+      setTimeout(() => {
+        console.log("gameover!");
+        currentState = 5;
+      }, 2000);
     }
   }
 

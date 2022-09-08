@@ -8,65 +8,77 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="/src/app.js" defer></script>
   </head>
   <body>
-    <div class="header">
-      <img src="/assets/images/logo.png" alt="" class="gameLogo" />
-      <div class="englishName">DRUM MASTER</div>
-    </div>
-
-    <!--------------------------------- Menu-------------------------------------------------->
-
-    <div class="playerSelection">
-      <!-- single player -->
-      <div class="playerCard" id="player1">
-        <div class="playerModePic">
-          <img src="/assets/images/single.png" alt="" id="singlePic" />
-        </div>
-        <div class="playerModeDesc">1 Player</div>
+   <!------------------------------------------------Menu -------------------------------------------------------->
+    <div class="menu">
+     
+      <div class="header">
+        <img src="/assets/images/logo.png" alt="" class="gameLogo" />
+        <div class="englishName">DRUM MASTER</div>
       </div>
-      <div class="playerCard" id="player2">
-        <div class="playerModePic">
-          <img src="/assets/images/twoplayer.png" alt="" id="twoPlayerPic" />
+      
+      <div class="playerSelection">
+        <div class="playerCard" id="player1">
+          <div class="playerModePic">
+            <img src="/assets/images/single.png" alt="" id="singlePic" />
+          </div>
+          <div class="playerModeDesc">1 Player</div>
         </div>
-        <div class="playerModeDesc">2 Players</div>
+        <div class="playerCard" id="player2">
+          <div class="playerModePic">
+            <img src="/assets/images/twoplayer.png" alt="" id="twoPlayerPic" />
+          </div>
+          <div class="playerModeDesc">2 Players</div>
+        </div>
       </div>
+      
     </div>
+   
 
-    <!--------------------------------- Play One-------------------------------------------------->
-    <div class="player1">
-      <div class="player">
-        <div class="playerTitle">
-          <class class="playerPic">
-            <img
-              src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
-              alt=""
-              id="player1Pic"
-            />
-          </class>
-          <class class="playerName">Yoshi</class>
-          <class class="playerID">Player1</class>
-        </div>
-
-        <canvas id="gameScreen" width="1000" height="300"></canvas>
-        <class class="playerStatus">
-          <div class="goal">
-            <div class="goalItem">Goal:</div>
-            <div class="goalItem" id="goalNum">12</div>
+    <!--------------------------------- Game Start: One Player-------------------------------------------------->
+    <div class="gamePlay">
+      <div class="header">
+        <img src="/assets/images/logo.png" alt="" class="gameLogo" />
+        <div class="englishName">DRUM MASTER</div>
+      </div>
+      <div class="player1">
+        <div class="player">
+          <div class="playerTitle">
+            <class class="playerPic">
+              <img
+                src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+                alt=""
+                class="player1Pic"
+              />
+            </class>
+            <class class="playerName">Yoshi</class>
+            <class class="playerID">Player1</class>
           </div>
-          <div class="scoreBoard">
-            <div class="scoreItem">Score:</div>
-            <div class="scoreItem" id="scoreNum">0</div>
-          </div>
-          <div class="life">
-            <div class="lifeItem">
-              <img src="/assets/images/heart.png" alt="" class="heart" />
+  
+          <canvas id="gameScreen" width="1000" height="300"></canvas>
+          <class class="playerStatus">
+            <div class="goal">
+              <div class="goalItem">Goal:</div>
+              <div class="goalItem" id="goalNum">12</div>
             </div>
-            <div class="lifeItem" id="lifeNum">5</div>
-          </div>
-        </class>
+            <div class="scoreBoard">
+              <div class="scoreItem">Score:</div>
+              <div class="scoreItem" id="scoreNum">0</div>
+            </div>
+            <div class="life">
+              <div class="lifeItem">
+                <img src="/assets/images/heart.png" alt="" class="heart" />
+              </div>
+              <div class="lifeItem" id="lifeNum">100</div>
+            </div>
+          </class>
+        </div>
       </div>
+
     </div>
+    
 
     <!--------------------------------- Play two-------------------------------------------------->
     <!-- TO DO -->
@@ -100,6 +112,63 @@
       </class>
     </div> -->
 
-    <script type="module" src="/src/app.js"></script>
+    <!--------------------------------- Show Result-------------------------------------------------->
+
+    <div class="leaderBoard">
+      <div class="leaderBoardHeader">
+        <img src="/assets/images/logo.png" alt="" class="gameLogo" />
+      </div>
+
+      <div class="leaderBoardScores">
+        
+        <div class="leaderBoardPlayer">
+          <div class="playerTitle playerTitleLB">
+            <class class="playerPic">
+              <img
+                src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+                alt=""
+                class="player1Pic"
+              />
+            </class>
+            <class class="playerName">Yoshi</class>
+            <class class="playerID playerIDLB">Player1</class>
+          </div>
+          <div class="scoreLB">13</div>
+          <div class="scoreStatus">
+            <img
+              src="https://cutewallpaper.org/24/you-win-png/you-win-caramel-apple-with-glossy-gloss-full-size-png-download-seekpng.png"
+              alt=""
+              class="win"
+            />
+          </div>
+        </div>
+        
+        <div class="leaderBoardPlayer">
+          <div class="playerTitle playerTitleLB">
+            <class class="playerPic">
+              <img
+                src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+                alt=""
+                class="player1Pic"
+              />
+            </class>
+            <class class="playerName">Mario</class>
+            <class class="playerID playerIDLB">Player2</class>
+          </div>
+          <div class="scoreLB">13</div>
+          <div class="scoreStatus">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/5512/5512298.png"
+              alt=""
+              class="win"
+            />
+          </div>
+        </div>
+
+      <div class="leaderBoardBtns">
+        <div class="leaderBoardBtn" >TRY AGAIN</div>
+        <div class="leaderBoardBtn">MENU</div>
+      </div>
+    </div>
   </body>
 </html>

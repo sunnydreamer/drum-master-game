@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -11,7 +12,9 @@ body {
 
 .header {
   /* border: solid red; */
+
   display: flex;
+  /* display: none; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -33,11 +36,22 @@ body {
 }
 
 /* menu */
+.menu {
+  display: none;
+  background-image: url("/assets/images/menu.png");
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
 .playerSelection {
   width: 80%;
   height: 70vh;
   margin: 3px auto;
   display: flex;
+  /* display: none; */
   justify-content: space-around;
 }
 
@@ -65,6 +79,13 @@ body {
   align-items: center;
   border-radius: 20px;
 }
+
+/* ------------------------------game start---------------- */
+.gamePlay {
+  display: block;
+  z-index: 0;
+}
+
 .playerModePic {
   /* border: solid blue; */
   width: 90%;
@@ -93,10 +114,6 @@ body {
 #gameScreen {
   background-color: #cff1e4;
   border-radius: 20px;
-}
-
-.player1 {
-  display: none;
 }
 
 .player {
@@ -185,7 +202,7 @@ body {
   font-size: 40px;
 }
 
-#player1Pic {
+.player1Pic {
   width: 50%;
   margin: 0 30%;
   background-color: lightblue;
@@ -195,6 +212,94 @@ body {
   cursor: cell;
 }
 
-#player1Pic:hover {
-  background-color: rgb(140, 192, 209);
+/* leaderboard */
+
+.leaderBoard {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  background-image: url("/assets/images/bg_score.png");
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.leaderBoardScores {
+  height: 600px;
+  margin: auto;
+  margin-top: 50px;
+  width: 70%;
+  /* border: solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.leaderBoardPlayer {
+  /* border: solid purple; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.leaderBoardHeader {
+  background-color: rgb(180, 25, 25);
+  padding: 10px;
+}
+
+.playerTitleLB {
+  /* border: solid green; */
+  padding: 10px;
+  justify-content: center;
+}
+
+.playerIDLB {
+  color: white;
+}
+
+.scoreLB {
+  width: 60%;
+  height: 200px;
+  border: lightgoldenrodyellow solid 10px;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  font-size: 150px;
+  text-align: center;
+}
+.scoreStatus {
+  width: 20%;
+  padding-left: 50px;
+}
+.win {
+  width: 150px;
+  /* border: solid white; */
+}
+
+.leaderBoardBtns {
+  /* border: solid green; */
+  display: flex;
+  justify-content: center;
+}
+
+.leaderBoardBtn {
+  width: 250px;
+  text-align: center;
+  background-color: darkorange;
+  border: solid rgb(156, 21, 21) 10px;
+  border-radius: 20px;
+  margin: 30px 50px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.leaderBoardBtn:hover {
+  width: 250px;
+  text-align: center;
+  background-color: rgb(255, 187, 0);
+  border: solid rgb(180, 25, 25) 10px;
+  border-radius: 20px;
+  margin: 30px 50px;
+  padding: 20px;
+  font-size: 30px;
 }
