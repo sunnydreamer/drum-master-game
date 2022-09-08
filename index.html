@@ -119,7 +119,7 @@
         <img src="/assets/images/logo.png" alt="" class="gameLogo" />
       </div>
 
-      <div class="leaderBoardScores">
+      <div class="leaderBoardScores" id="player1Score">
         
         <div class="leaderBoardPlayer">
           <div class="playerTitle playerTitleLB">
@@ -138,12 +138,16 @@
             <img
               src="https://cutewallpaper.org/24/you-win-png/you-win-caramel-apple-with-glossy-gloss-full-size-png-download-seekpng.png"
               alt=""
-              class="win"
+              class = "winLoseShow" id="winP1"
             />
+            <img
+            src="https://cdn-icons-png.flaticon.com/512/5512/5512298.png"
+            alt=""
+            class= "winLoseShow" id="lostP1"/>
           </div>
         </div>
         
-        <div class="leaderBoardPlayer">
+        <!-- <div class="leaderBoardPlayer" id="player2Score">
           <div class="playerTitle playerTitleLB">
             <class class="playerPic">
               <img
@@ -163,11 +167,11 @@
               class="win"
             />
           </div>
-        </div>
+        </div> -->
 
       <div class="leaderBoardBtns">
         <div class="leaderBoardBtn" >TRY AGAIN</div>
-        <div class="leaderBoardBtn">MENU</div>
+        <div class="leaderBoardBtn" id ="menuBtn" >MENU</div>
       </div>
     </div>
   </body>

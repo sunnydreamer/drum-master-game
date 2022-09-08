@@ -271,10 +271,6 @@ body {
   width: 20%;
   padding-left: 50px;
 }
-.win {
-  width: 150px;
-  /* border: solid white; */
-}
 
 .leaderBoardBtns {
   /* border: solid green; */
@@ -302,4 +298,23 @@ body {
   margin: 30px 50px;
   padding: 20px;
   font-size: 30px;
+}
+
+#player2Score {
+  display: none;
+}
+
+.winLoseShow {
+  width: 150px;
+
+  /* border: solid white; */
+}
+
+#winP1 {
+  display: block;
+}
+
+#lostP1 {
+  display: none;
+  padding: 10%;
 }

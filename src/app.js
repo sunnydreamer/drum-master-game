@@ -22,20 +22,28 @@ const GAMESTATE = {
 };
 
 // Define starting game state
-let currentState = GAMESTATE.MENU;
+let currentState = GAMESTATE.SUMMARY;
 
 // get dom sections
 let singlePlayerChoice = document.getElementById("player1");
 let player1 = document.querySelector(".player1");
 let playerSelection = document.querySelector(".playerSelection");
 let leaderBoard = document.querySelector(".leaderBoard");
+let menuBtn = document.getElementById("menuBtn");
+let winP1 = document.getElementById("winP1");
+let lostP1 = document.getElementById("lostP1");
 
-// Menu function
+// functions
 const singlePlayerStart = () => {
   currentState = 4;
 };
 
 singlePlayerChoice.addEventListener("click", singlePlayerStart);
+
+const gotoMenu = () => {
+  currentState = 2;
+};
+menuBtn.addEventListener("click", gotoMenu);
 
 // import music and effect
 const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
@@ -60,6 +68,24 @@ let gameStart = null;
 let progress = null;
 let pauseProgress = null;
 
+//reset game function
+const resetGame = (t) => {
+  input.currentPlay = "none";
+  // reset game start time
+  gameStart = t;
+  progress = 0;
+  //reset beat
+  beatPoints = songs.song1;
+
+  // reset beatPoints lock
+  for (let i = 0; i < beatPoints.length; i++) {
+    beatPoints[i].isLock = false;
+    beatPoints[i].note.size = 100;
+  }
+  //clear canvas
+  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+};
+
 // -----------------------------------------------start game loop -----------------------------------
 
 function gameLoop(timestamp) {
@@ -74,6 +100,7 @@ function gameLoop(timestamp) {
     //change background
     // draw menu
     document.querySelector(".menu").style.display = "block";
+    leaderBoard.style.display = "none";
   }
 
   // ---------------------------------------------standby:player1----------------------------------
@@ -84,9 +111,8 @@ function gameLoop(timestamp) {
 
     //show players
     player1.style.display = "block";
-    // console.log(beatPoints);
 
-    // draw menu
+    // draw game frame
     ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     ctx.fillStyle = "rgba(0,0,0,0.2)";
     ctx.fill();
@@ -96,15 +122,17 @@ function gameLoop(timestamp) {
     ctx.textAlign = "center";
     ctx.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
 
+    // reset life points and score
+    document.getElementById("lifeNum").innerHTML = 5;
+    document.getElementById("scoreNum").innerHTML = 0;
+
     // trigger game start
+
+    gameMusic.currentTime = 0;
 
     if (input.currentPlay === "space") {
       currentState = 1;
-      input.currentPlay = "none";
-      // reset game start time
-      gameStart = timestamp;
-      //reset beat
-      beatPoints = songs.song1;
+      resetGame(timestamp);
     }
   }
 
@@ -160,8 +188,6 @@ function gameLoop(timestamp) {
     });
     // console.log(beatPoints);
 
-    // reset time
-
     // trigger game start
 
     if (input.currentPlay === "space") {
@@ -171,7 +197,6 @@ function gameLoop(timestamp) {
       gameStart = timestamp;
       // reset life points
       document.getElementById("lifeNum").innerHTML = 5;
-      console.log(document.getElementById("lifeNum").innerHTML);
       //clear canvas
       ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
@@ -198,6 +223,7 @@ function gameLoop(timestamp) {
   }
   // ---------------------------------------------game start:one player----------------------------------
   else if (currentState === 1) {
+    // console.log(beatPoints);
     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     //music play
     gameMusic.play();
@@ -268,6 +294,9 @@ function gameLoop(timestamp) {
             parseInt(document.getElementById("lifeNum").innerHTML) - 1;
           if (parseInt(document.getElementById("lifeNum").innerHTML) === 0) {
             gameover.play();
+            currentState = 5;
+            lostP1.style.display = "block";
+            winP1.style.display = "none";
           }
           beatPoints[i].isLock = true;
         }
@@ -280,6 +309,8 @@ function gameLoop(timestamp) {
       setTimeout(() => {
         console.log("gameover!");
         currentState = 5;
+        lostP1.style.display = "none";
+        winP1.style.display = "block";
       }, 2000);
     }
   }
