@@ -1,8 +1,6 @@
-import Don, { Ka, Ballon } from "/src/drums.js";
 import Sensor from "/src/sensor.js";
 import InputHandlder from "/src/input.js";
 import { songs } from "/src/songs.js";
-import Game from "/src/game.js";
 
 let canvas = document.getElementById("gameScreen");
 let canvas2 = document.getElementById("gameScreen2");
@@ -35,14 +33,14 @@ let singlePlayerChoice = document.getElementById("player1");
 let twoPlayersChoice = document.getElementById("player2");
 let player1 = document.querySelector(".player1");
 let player2 = document.querySelector(".player2");
-
-let playerSelection = document.querySelector(".playerSelection");
 let leaderBoard = document.querySelector(".leaderBoard");
 let menuBtn = document.getElementById("menuBtn");
 let winP1 = document.getElementById("winP1");
 let lostP1 = document.getElementById("lostP1");
 let winP2 = document.getElementById("winP2");
 let lostP2 = document.getElementById("lostP2");
+let drawP1 = document.getElementById("drawP1");
+let drawP2 = document.getElementById("drawP2");
 
 let scoreNum = document.getElementById("scoreNum");
 let scoreNum2 = document.getElementById("scoreNum2");
@@ -231,9 +229,9 @@ function gameLoop(timestamp) {
     ctx2.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
 
     // reset life points and score
-    document.getElementById("lifeNum").innerHTML = 5;
+    document.getElementById("lifeNum").innerHTML = 100;
     document.getElementById("scoreNum").innerHTML = 0;
-    document.getElementById("lifeNum2").innerHTML = 5;
+    document.getElementById("lifeNum2").innerHTML = 100;
     document.getElementById("scoreNum2").innerHTML = 0;
 
     // trigger game start
@@ -443,43 +441,55 @@ function gameLoop(timestamp) {
         console.log("playe2 wins");
         lostP1.style.display = "block";
         winP1.style.display = "none";
+        drawP1.style.display = "none";
         lostP2.style.display = "none";
         winP2.style.display = "block";
+        drawP2.style.display = "none";
       } else {
         document.querySelector(".currentScore2").innerHTML = "YOU LOSE";
         console.log("both die!");
         lostP1.style.display = "block";
         winP1.style.display = "none";
+        drawP1.style.display = "none";
         lostP2.style.display = "block";
         winP2.style.display = "none";
+        drawP2.style.display = "none";
       }
     } else if (lifeNum.innerHTML > 0) {
       if (lifeNum2.innerHTML <= 0) {
         document.querySelector(".currentScore2").innerHTML = "YOU LOSE";
         lostP1.style.display = "none";
         winP1.style.display = "block";
+        drawP1.style.display = "none";
         lostP2.style.display = "block";
         winP2.style.display = "none";
+        drawP2.style.display = "none";
         console.log("player1 wins");
       } else if (lifeNum2.innerHTML > 0) {
         if (scoreNum.innerHTML > scoreNum2.innerHTML) {
           console.log("player1 wins");
           lostP1.style.display = "none";
           winP1.style.display = "block";
+          drawP1.style.display = "none";
           lostP2.style.display = "block";
           winP2.style.display = "none";
+          drawP2.style.display = "none";
         } else if (scoreNum.innerHTML < scoreNum2.innerHTML) {
           console.log("player2 wins");
           lostP1.style.display = "block";
           winP1.style.display = "none";
+          drawP1.style.display = "none";
           lostP2.style.display = "none";
           winP2.style.display = "block";
+          drawP2.style.display = "none";
         } else if (scoreNum.innerHTML === scoreNum2.innerHTML) {
           console.log("draw");
           lostP1.style.display = "none";
           winP1.style.display = "none";
           lostP2.style.display = "none";
           winP2.style.display = "none";
+          drawP1.style.display = "block";
+          drawP2.style.display = "block";
         }
       }
     }

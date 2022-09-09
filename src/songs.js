@@ -30,8 +30,6 @@ export const songs = {
     { time: timeGenerator(3, 0), note: new Don(), isLock: false },
     { time: timeGenerator(3, 1), note: new Don(), isLock: false },
     { time: timeGenerator(3, 1.5), note: new Ballon(), isLock: false },
-    // { time: timeGenerator(3, 2.5), note: new Ka(), isLock: false },
-    // { time: timeGenerator(3, 3.5), note: new Don(), isLock: false },
 
     // bar 5
     { time: timeGenerator(4, 0), note: new Ka(), isLock: false },
@@ -48,14 +46,10 @@ export const songs = {
     // bar7
     { time: timeGenerator(6, 0), note: new Ka(), isLock: false },
     { time: timeGenerator(6, 1), note: new Ka(), isLock: false },
-    // { time: timeGenerator(6, 2), note: new Ka(), isLock: false },
-    // { time: timeGenerator(6, 3), note: new Ka(), isLock: false },
 
     // bar8
     { time: timeGenerator(7, 0), note: new Don(), isLock: false },
     { time: timeGenerator(7, 1), note: new Don(), isLock: false },
-    // { time: timeGenerator(7, 2), note: new Don(), isLock: false },
-    // { time: timeGenerator(7, 3), note: new Don(), isLock: false },
 
     // bar9
     { time: timeGenerator(8, 0), note: new Ka(), isLock: false },
@@ -95,8 +89,6 @@ export const songs = {
     { time: timeGenerator(3, 0), note: new Don(), isLock: false },
     { time: timeGenerator(3, 1), note: new Don(), isLock: false },
     { time: timeGenerator(3, 1.5), note: new Ballon(), isLock: false },
-    // { time: timeGenerator(3, 2.5), note: new Ka(), isLock: false },
-    // { time: timeGenerator(3, 3.5), note: new Don(), isLock: false },
 
     // bar 5
     { time: timeGenerator(4, 0), note: new Ka(), isLock: false },
@@ -113,14 +105,10 @@ export const songs = {
     // bar7
     { time: timeGenerator(6, 0), note: new Ka(), isLock: false },
     { time: timeGenerator(6, 1), note: new Ka(), isLock: false },
-    // { time: timeGenerator(6, 2), note: new Ka(), isLock: false },
-    // { time: timeGenerator(6, 3), note: new Ka(), isLock: false },
 
     // bar8
     { time: timeGenerator(7, 0), note: new Don(), isLock: false },
     { time: timeGenerator(7, 1), note: new Don(), isLock: false },
-    // { time: timeGenerator(7, 2), note: new Don(), isLock: false },
-    // { time: timeGenerator(7, 3), note: new Don(), isLock: false },
 
     // bar9
     { time: timeGenerator(8, 0), note: new Ka(), isLock: false },
