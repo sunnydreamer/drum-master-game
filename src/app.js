@@ -441,10 +441,10 @@ function gameLoop(timestamp) {
       document.querySelector(".currentScore").innerHTML = "YOU LOSE";
       if (lifeNum2.innerHTML > 0) {
         console.log("playe2 wins");
-        lostP1.style.display = "none";
-        winP1.style.display = "block";
-        lostP2.style.display = "block";
-        winP2.style.display = "none";
+        lostP1.style.display = "block";
+        winP1.style.display = "none";
+        lostP2.style.display = "none";
+        winP2.style.display = "block";
       } else {
         document.querySelector(".currentScore2").innerHTML = "YOU LOSE";
         console.log("both die!");
@@ -658,8 +658,15 @@ function gameLoop(timestamp) {
             parseInt(document.getElementById("lifeNum").innerHTML) - 1;
           if (parseInt(document.getElementById("lifeNum").innerHTML) <= 0) {
             document.getElementById("lifeNum").innerHTML = 0;
+            //lock the blocks
+            beatPoints.forEach((element) => {
+              element.note.isLock = true;
+              element.note.size = 0;
+            });
+
             if (parseInt(document.getElementById("lifeNum2").innerHTML) <= 0) {
               currentState = 9;
+              gameover.play();
             }
           }
           beatPoints[i].isLock = true;
@@ -711,7 +718,14 @@ function gameLoop(timestamp) {
           console.log("miss2");
           document.getElementById("lifeNum2").innerHTML =
             parseInt(document.getElementById("lifeNum2").innerHTML) - 1;
-          if (parseInt(document.getElementById("lifeNum2").innerHTML) === 0) {
+          if (parseInt(document.getElementById("lifeNum2").innerHTML) <= 0) {
+            //lock the blocks
+            beatPoints2.forEach((element) => {
+              element.note.isLock = true;
+              element.note.size = 0;
+            });
+
+            document.getElementById("lifeNum2").innerHTML = 0;
             console.log("player 2 died");
           }
           beatPoints2[i].isLock = true;
