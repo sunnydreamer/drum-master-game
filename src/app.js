@@ -22,7 +22,7 @@ const GAMESTATE = {
 };
 
 // Define starting game state
-let currentState = GAMESTATE.SUMMARY;
+let currentState = GAMESTATE.MENU;
 
 // get dom sections
 let singlePlayerChoice = document.getElementById("player1");
@@ -32,18 +32,34 @@ let leaderBoard = document.querySelector(".leaderBoard");
 let menuBtn = document.getElementById("menuBtn");
 let winP1 = document.getElementById("winP1");
 let lostP1 = document.getElementById("lostP1");
+let scoreNum = document.getElementById("scoreNum");
+let tryAgainBtn = document.getElementById("tryAgainBtn");
 
 // functions
+
+const playClick = () => {
+  click.play();
+};
+
 const singlePlayerStart = () => {
   currentState = 4;
+  playClick();
 };
 
 singlePlayerChoice.addEventListener("click", singlePlayerStart);
 
 const gotoMenu = () => {
   currentState = 2;
+  playClick();
 };
+
 menuBtn.addEventListener("click", gotoMenu);
+
+const tryAgain = () => {
+  currentState = 4;
+  playClick();
+};
+tryAgainBtn.addEventListener("click", tryAgain);
 
 // import music and effect
 const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
@@ -51,6 +67,10 @@ gameMusic.volume = 0.08;
 gameMusic.loop = true;
 const gameover = new Audio("/assets/music/gameover.mp3");
 gameover.volume = 0.1;
+const win = new Audio("/assets/music/win.wav");
+win.volume = 0.1;
+const click = new Audio("/assets/music/click.wav");
+click.volume = 0.1;
 
 // add input handler
 
@@ -86,6 +106,10 @@ const resetGame = (t) => {
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 };
 
+//set up best score
+
+let bestScore = 0;
+
 // -----------------------------------------------start game loop -----------------------------------
 
 function gameLoop(timestamp) {
@@ -108,6 +132,7 @@ function gameLoop(timestamp) {
   if (currentState === 4) {
     //change background
     document.querySelector(".menu").style.display = "none";
+    leaderBoard.style.display = "none";
 
     //show players
     player1.style.display = "block";
@@ -123,7 +148,7 @@ function gameLoop(timestamp) {
     ctx.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
 
     // reset life points and score
-    document.getElementById("lifeNum").innerHTML = 5;
+    document.getElementById("lifeNum").innerHTML = 100;
     document.getElementById("scoreNum").innerHTML = 0;
 
     // trigger game start
@@ -209,8 +234,25 @@ function gameLoop(timestamp) {
   // ---------------------------------------------game summary----------------------------------
 
   if (currentState === 5) {
+    //stop music
     gameMusic.pause();
     gameMusic.currentTime = 0;
+
+    //set up score
+
+    if (parseInt(document.getElementById("lifeNum").innerHTML) === 0) {
+      document.querySelector(".currentScore").innerHTML = "YOU LOSE";
+      lostP1.style.display = "block";
+      winP1.style.display = "none";
+    } else {
+      document.querySelector(".currentScore").innerHTML = scoreNum.innerHTML;
+      if (parseInt(scoreNum.innerHTML) > bestScore) {
+        bestScore = parseInt(scoreNum.innerHTML);
+        document.querySelector(".bestScoreNum").innerHTML = bestScore;
+      }
+      lostP1.style.display = "none";
+      winP1.style.display = "block";
+    }
 
     //reset beatPoints
 
@@ -295,8 +337,6 @@ function gameLoop(timestamp) {
           if (parseInt(document.getElementById("lifeNum").innerHTML) === 0) {
             gameover.play();
             currentState = 5;
-            lostP1.style.display = "block";
-            winP1.style.display = "none";
           }
           beatPoints[i].isLock = true;
         }
@@ -309,8 +349,7 @@ function gameLoop(timestamp) {
       setTimeout(() => {
         console.log("gameover!");
         currentState = 5;
-        lostP1.style.display = "none";
-        winP1.style.display = "block";
+        win.play();
       }, 2000);
     }
   }

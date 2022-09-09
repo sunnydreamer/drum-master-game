@@ -59,10 +59,7 @@
   
           <canvas id="gameScreen" width="1000" height="300"></canvas>
           <class class="playerStatus">
-            <div class="goal">
-              <div class="goalItem">Goal:</div>
-              <div class="goalItem" id="goalNum">12</div>
-            </div>
+            
             <div class="scoreBoard">
               <div class="scoreItem">Score:</div>
               <div class="scoreItem" id="scoreNum">0</div>
@@ -71,7 +68,7 @@
               <div class="lifeItem">
                 <img src="/assets/images/heart.png" alt="" class="heart" />
               </div>
-              <div class="lifeItem" id="lifeNum">100</div>
+              <div class="lifeItem" id="lifeNum"></div>
             </div>
           </class>
         </div>
@@ -133,7 +130,14 @@
             <class class="playerName">Yoshi</class>
             <class class="playerID playerIDLB">Player1</class>
           </div>
-          <div class="scoreLB">13</div>
+          
+          <div class="scoreLB" id="scoreLBplayer1">
+            <div class="bestScore">
+              <div class="bestScoreText">Best Score: &nbsp  </div>
+              <div class="bestScoreNum">0</div>
+            </div>
+            <div class="currentScore">29</div>
+          </div>
           <div class="scoreStatus">
             <img
               src="https://cutewallpaper.org/24/you-win-png/you-win-caramel-apple-with-glossy-gloss-full-size-png-download-seekpng.png"
@@ -170,7 +174,7 @@
         </div> -->
 
       <div class="leaderBoardBtns">
-        <div class="leaderBoardBtn" >TRY AGAIN</div>
+        <div class="leaderBoardBtn" id="tryAgainBtn">TRY AGAIN</div>
         <div class="leaderBoardBtn" id ="menuBtn" >MENU</div>
       </div>
     </div>
