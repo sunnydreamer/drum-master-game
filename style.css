@@ -43,6 +43,7 @@ body {
   background-size: cover;
   position: absolute;
   width: 100%;
+  top: 0;
   height: 100vh;
   z-index: 1;
 }
@@ -108,6 +109,11 @@ body {
 /* menu end */
 #gameScreen {
   background-color: #cff1e4;
+  border-radius: 20px;
+}
+
+#gameScreen2 {
+  background-color: PINK;
   border-radius: 20px;
 }
 
@@ -192,8 +198,7 @@ body {
   margin-right: 10px;
 }
 
-#lifeNum {
-  /* border: solid green; */
+.lifeItem {
   font-size: 40px;
 }
 
@@ -219,14 +224,14 @@ body {
 }
 
 .leaderBoardScores {
-  height: 600px;
+  height: 320px;
   margin: auto;
-  margin-top: 50px;
   width: 70%;
   /* border: solid green; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  /* border: solid green; */
 }
 
 .leaderBoardPlayer {
@@ -262,13 +267,18 @@ body {
 
 .bestScore {
   color: orange;
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
 
 .currentScore {
+  color: white;
+  font-size: 120px;
+}
+
+.currentScore2 {
   color: white;
   font-size: 120px;
 }
@@ -306,10 +316,6 @@ body {
   font-size: 30px;
 }
 
-#player2Score {
-  display: none;
-}
-
 .winLoseShow {
   width: 150px;
 
@@ -322,5 +328,14 @@ body {
 
 #lostP1 {
   display: none;
-  padding: 10%;
+}
+
+/* player2 */
+
+.player2 {
+  display: none;
+}
+
+#player2Score {
+  display: none;
 }

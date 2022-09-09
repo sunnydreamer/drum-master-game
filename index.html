@@ -78,36 +78,40 @@
     
 
     <!--------------------------------- Play two-------------------------------------------------->
-    <!-- TO DO -->
-    <!-- <div class="player">
-      <div class="playerTitle">
-        <class class="playerPic">
-          <img
-            src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
-            alt=""
-            id="player1Pic"
-          />
-        </class>
-        <class class="playerName">Yoshi</class>
-        <class class="playerID">Player1</class>
+ 
+    
+      <div class="player2">
+        <div class="player">
+          <div class="playerTitle">
+            <class class="playerPic">
+              <img
+                src="https://vignette.wikia.nocookie.net/character-stats-and-profiles/images/e/e3/Mario_SM64.png/revision/latest?cb=20170521095022"
+                alt=""
+                class="player1Pic"
+              />
+            </class>
+            <class class="playerName">Mario</class>
+            <class class="playerID">Player2</class>
+          </div>
+  
+          <canvas id="gameScreen2" width="1000" height="300"></canvas>
+          <class class="playerStatus">
+            
+            <div class="scoreBoard">
+              <div class="scoreItem">Score:</div>
+              <div class="scoreItem" id="scoreNum2">0</div>
+            </div>
+            <div class="life">
+              <div class="lifeItem">
+                <img src="/assets/images/heart.png" alt="" class="heart" />
+              </div>
+              <div class="lifeItem" id="lifeNum2">0</div>
+            </div>
+          </class>
+        </div>
       </div>
 
-      <canvas id="gameScreen" width="1000" height="300"></canvas>
-      <class class="playerStatus">
-        <div class="goal">
-          <div class="goalItem">Goal:</div>
-          <div class="goalItem" id="goalNum">20</div>
-        </div>
-        <div class="scoreBoard">
-          <div class="scoreItem">Score:</div>
-          <div class="scoreItem" id="scoreNum">0</div>
-        </div>
-        <div class="life">
-          <div class="lifeItem">Life:</div>
-          <div class="lifeItem" id="lifeNum">3</div>
-        </div>
-      </class>
-    </div> -->
+   
 
     <!--------------------------------- Show Result-------------------------------------------------->
 
@@ -136,7 +140,7 @@
               <div class="bestScoreText">Best Score: &nbsp  </div>
               <div class="bestScoreNum">0</div>
             </div>
-            <div class="currentScore">29</div>
+            <div class="currentScore">20</div>
           </div>
           <div class="scoreStatus">
             <img
@@ -150,33 +154,49 @@
             class= "winLoseShow" id="lostP1"/>
           </div>
         </div>
-        
-        <!-- <div class="leaderBoardPlayer" id="player2Score">
-          <div class="playerTitle playerTitleLB">
-            <class class="playerPic">
-              <img
-                src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
-                alt=""
-                class="player1Pic"
-              />
-            </class>
-            <class class="playerName">Mario</class>
-            <class class="playerID playerIDLB">Player2</class>
-          </div>
-          <div class="scoreLB">13</div>
-          <div class="scoreStatus">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/5512/5512298.png"
-              alt=""
-              class="win"
-            />
-          </div>
-        </div> -->
 
-      <div class="leaderBoardBtns">
-        <div class="leaderBoardBtn" id="tryAgainBtn">TRY AGAIN</div>
-        <div class="leaderBoardBtn" id ="menuBtn" >MENU</div>
+    </div>
+
+    <!-- player2 score -->
+    <div class="leaderBoardScores" id="player2Score">
+        
+      <div class="leaderBoardPlayer">
+        <div class="playerTitle playerTitleLB">
+          <class class="playerPic">
+            <img
+              src="https://www.shared.com/content/images/2017/03/Ground_Pound_Yoshi.png"
+              alt=""
+              class="player1Pic"
+            />
+          </class>
+          <class class="playerName">Mario</class>
+          <class class="playerID playerIDLB">Player2</class>
+        </div>
+        
+        <div class="scoreLB" id="scoreLBplayer1">
+          <div class="bestScore">
+            <div class="bestScoreText">Best Score: &nbsp  </div>
+            <div class="bestScoreNum2">0</div>
+          </div>
+          <div class="currentScore2">10</div>
+        </div>
+        <div class="scoreStatus">
+          <img
+            src="https://cutewallpaper.org/24/you-win-png/you-win-caramel-apple-with-glossy-gloss-full-size-png-download-seekpng.png"
+            alt=""
+            class = "winLoseShow" id="winP2"
+          />
+          <img
+          src="https://cdn-icons-png.flaticon.com/512/5512/5512298.png"
+          alt=""
+          class= "winLoseShow" id="lostP2"/>
+        </div>
       </div>
+  </div>
+  <!-- player2 score end -->
+    <div class="leaderBoardBtns">
+      <div class="leaderBoardBtn" id="tryAgainBtn">TRY AGAIN</div>
+      <div class="leaderBoardBtn" id ="menuBtn" >MENU</div>
     </div>
   </body>
 </html>
