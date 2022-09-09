@@ -339,3 +339,7 @@ body {
 #player2Score {
   display: none;
 }
+
+#tryAgainBtn2 {
+  display: none;
+}

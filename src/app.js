@@ -50,6 +50,7 @@ let lifeNum = document.getElementById("lifeNum");
 let lifeNum2 = document.getElementById("lifeNum2");
 
 let tryAgainBtn = document.getElementById("tryAgainBtn");
+let tryAgainBtn2 = document.getElementById("tryAgainBtn2");
 
 // functions
 
@@ -82,6 +83,12 @@ const tryAgain = () => {
   playClick();
 };
 tryAgainBtn.addEventListener("click", tryAgain);
+
+const tryAgain2 = () => {
+  currentState = 6;
+  playClick();
+};
+tryAgainBtn2.addEventListener("click", tryAgain2);
 
 // import music and effect
 const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
@@ -362,6 +369,8 @@ function gameLoop(timestamp) {
 
     // hide player2 section
     document.getElementById("player2Score").style.display = "none";
+    document.getElementById("tryAgainBtn").style.display = "block";
+    document.getElementById("tryAgainBtn2").style.display = "none";
 
     //set up score
 
@@ -403,6 +412,8 @@ function gameLoop(timestamp) {
 
     // show player2 section
     document.getElementById("player2Score").style.display = "block";
+    document.getElementById("tryAgainBtn").style.display = "none";
+    document.getElementById("tryAgainBtn2").style.display = "block";
 
     //show score in dom
     document.querySelector(".currentScore").innerHTML = scoreNum.innerHTML;
