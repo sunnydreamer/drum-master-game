@@ -8,10 +8,12 @@ The song's name is "Butterfly" performed by Kōji Wada, which was used as the or
 
 **Table of contents:**
 
-- [Quick Tour](#quick-tour)
-- [Technology](#technology)
-- [Development](#development)
-- [Sub-projects](#sub-projects)
+- [Getting Started](#GettingStarted)
+- [Video Demo](#VideoDemo)
+- [Quick Tour](#QuickTour)
+- [Unsolved Problem](#UnsolvedProblem)
+- [Contributing](#Contributing)
+- [License](#License)
 
 ## Getting Started
 
@@ -20,7 +22,7 @@ Visit [this page](https://sunnydreamer.github.io/drum-master-game/) to play the 
 ## Video Demo
 
 <p align="center">
-  <a href="./assets/images/video.mp4" alt="Video Demo" width="754"/></a>
+  <a href="https://user-images.githubusercontent.com/76085212/189548451-b1dd6b0a-7d9b-40a8-b6d8-fafd296bdd07.mp4" alt="Video Demo" width="754"/></a>
 </p>
 
 ## Quick Tour
