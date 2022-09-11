@@ -8,12 +8,12 @@ The song's name is "Butterfly" performed by Kōji Wada, which was used as the or
 
 **Table of contents:**
 
-- [Getting Started](#GettingStarted)
-- [Video Demo](#VideoDemo)
-- [Quick Tour](#QuickTour)
-- [Unsolved Problem](#UnsolvedProblem)
-- [Contributing](#Contributing)
-- [License](#License)
+- [Getting Started](#getting-started)
+- [Video Demo](#video-demo)
+- [Quick Tour](#quick-tour)
+- [Unsolved Problem](#unsolved-problem)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Getting Started
 
