@@ -88,6 +88,46 @@ const tryAgain2 = () => {
 };
 tryAgainBtn2.addEventListener("click", tryAgain2);
 
+const player1Win = () => {
+  lostP1.style.display = "none";
+  winP1.style.display = "block";
+  drawP1.style.display = "none";
+  lostP2.style.display = "block";
+  winP2.style.display = "none";
+  drawP2.style.display = "none";
+  console.log("player1 wins");
+};
+
+const player2Win = () => {
+  console.log("player2 wins");
+  lostP1.style.display = "block";
+  winP1.style.display = "none";
+  drawP1.style.display = "none";
+  lostP2.style.display = "none";
+  winP2.style.display = "block";
+  drawP2.style.display = "none";
+};
+
+const draw = () => {
+  console.log("draw");
+  lostP1.style.display = "none";
+  winP1.style.display = "none";
+  lostP2.style.display = "none";
+  winP2.style.display = "none";
+  drawP1.style.display = "block";
+  drawP2.style.display = "block";
+};
+
+const bothDie = () => {
+  console.log("both die!");
+  lostP1.style.display = "block";
+  winP1.style.display = "none";
+  drawP1.style.display = "none";
+  lostP2.style.display = "block";
+  winP2.style.display = "none";
+  drawP2.style.display = "none";
+};
+
 // import music and effect
 const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
 gameMusic.volume = 0.08;
@@ -229,9 +269,9 @@ function gameLoop(timestamp) {
     ctx2.fillText("Press Space Bar to Start", GAME_WIDTH / 2, GAME_HEIGHT / 2);
 
     // reset life points and score
-    document.getElementById("lifeNum").innerHTML = 100;
+    document.getElementById("lifeNum").innerHTML = 5;
     document.getElementById("scoreNum").innerHTML = 0;
-    document.getElementById("lifeNum2").innerHTML = 100;
+    document.getElementById("lifeNum2").innerHTML = 5;
     document.getElementById("scoreNum2").innerHTML = 0;
 
     // trigger game start
@@ -438,58 +478,22 @@ function gameLoop(timestamp) {
     if (lifeNum.innerHTML <= 0) {
       document.querySelector(".currentScore").innerHTML = "YOU LOSE";
       if (lifeNum2.innerHTML > 0) {
-        console.log("playe2 wins");
-        lostP1.style.display = "block";
-        winP1.style.display = "none";
-        drawP1.style.display = "none";
-        lostP2.style.display = "none";
-        winP2.style.display = "block";
-        drawP2.style.display = "none";
+        player2Win();
       } else {
         document.querySelector(".currentScore2").innerHTML = "YOU LOSE";
-        console.log("both die!");
-        lostP1.style.display = "block";
-        winP1.style.display = "none";
-        drawP1.style.display = "none";
-        lostP2.style.display = "block";
-        winP2.style.display = "none";
-        drawP2.style.display = "none";
+        bothDie();
       }
     } else if (lifeNum.innerHTML > 0) {
       if (lifeNum2.innerHTML <= 0) {
         document.querySelector(".currentScore2").innerHTML = "YOU LOSE";
-        lostP1.style.display = "none";
-        winP1.style.display = "block";
-        drawP1.style.display = "none";
-        lostP2.style.display = "block";
-        winP2.style.display = "none";
-        drawP2.style.display = "none";
-        console.log("player1 wins");
+        player1Win();
       } else if (lifeNum2.innerHTML > 0) {
         if (scoreNum.innerHTML > scoreNum2.innerHTML) {
-          console.log("player1 wins");
-          lostP1.style.display = "none";
-          winP1.style.display = "block";
-          drawP1.style.display = "none";
-          lostP2.style.display = "block";
-          winP2.style.display = "none";
-          drawP2.style.display = "none";
+          player1Win();
         } else if (scoreNum.innerHTML < scoreNum2.innerHTML) {
-          console.log("player2 wins");
-          lostP1.style.display = "block";
-          winP1.style.display = "none";
-          drawP1.style.display = "none";
-          lostP2.style.display = "none";
-          winP2.style.display = "block";
-          drawP2.style.display = "none";
+          player2Win();
         } else if (scoreNum.innerHTML === scoreNum2.innerHTML) {
-          console.log("draw");
-          lostP1.style.display = "none";
-          winP1.style.display = "none";
-          lostP2.style.display = "none";
-          winP2.style.display = "none";
-          drawP1.style.display = "block";
-          drawP2.style.display = "block";
+          draw();
         }
       }
     }
@@ -525,12 +529,6 @@ function gameLoop(timestamp) {
       pauseProgress = progress;
     }
     progress = timestamp - gameStart;
-
-    // beat tracker ---> to make a new song
-    // if (input.currentPlay != "none") {
-    //   console.log(progress);
-    //   input.currentPlay = "none";
-    // }
 
     //draw my drum(sensor)
     sensor.draw(ctx);
@@ -628,7 +626,6 @@ function gameLoop(timestamp) {
       let drumPlay = "none";
       if (progress >= beatPoints[i].time) {
         beatPoints[i].note.draw(ctx);
-        // console.log(beatPoints[i].time);
         beatPoints[i].note.update(dt);
 
         if (

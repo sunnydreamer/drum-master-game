@@ -303,7 +303,6 @@ body {
 }
 
 .scoreStatus {
-  /* width: 20%; */
   padding-left: 50px;
 }
 
@@ -337,7 +336,6 @@ body {
 
 .winLoseShow {
   width: 150px;
-
   /* border: solid white; */
 }
 
