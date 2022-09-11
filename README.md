@@ -21,9 +21,7 @@ Visit [this page](https://sunnydreamer.github.io/drum-master-game/) to play the 
 
 ## Video Demo
 
-<p align="center">
-  <a href="https://user-images.githubusercontent.com/76085212/189548451-b1dd6b0a-7d9b-40a8-b6d8-fafd296bdd07.mp4" alt="Video Demo" width="754"/></a>
-</p>
+![screenshot](./assets/images/video.gif)
 
 ## Quick Tour
 
