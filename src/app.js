@@ -1,6 +1,6 @@
-import Sensor from "./src/sensor.js";
-import InputHandlder from "./src/input.js";
-import { songs } from "./src/songs.js";
+import Sensor from "/src/sensor.js";
+import InputHandlder from "/src/input.js";
+import { songs } from "/src/songs.js";
 
 let canvas = document.getElementById("gameScreen");
 let canvas2 = document.getElementById("gameScreen2");
@@ -129,14 +129,14 @@ const bothDie = () => {
 };
 
 // import music and effect
-const gameMusic = new Audio("./assets/music/butterflyShort.mp3");
+const gameMusic = new Audio("/assets/music/butterflyShort.mp3");
 gameMusic.volume = 0.08;
 gameMusic.loop = true;
-const gameover = new Audio("./assets/music/gameover.mp3");
+const gameover = new Audio("/assets/music/gameover.mp3");
 gameover.volume = 0.1;
-const win = new Audio("./assets/music/win.wav");
+const win = new Audio("/assets/music/win.wav");
 win.volume = 0.1;
-const click = new Audio("./assets/music/click.wav");
+const click = new Audio("/assets/music/click.wav");
 click.volume = 0.1;
 
 // add input handler
