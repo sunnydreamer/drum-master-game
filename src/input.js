@@ -1,8 +1,8 @@
-const donSound = new Audio("/assets/music/Don.wav");
+const donSound = new Audio("./assets/music/Don.wav");
 donSound.volume = 0.2;
-const kaSound = new Audio("/assets/music/Ka.wav");
+const kaSound = new Audio("./assets/music/Ka.wav");
 kaSound.volume = 0.5;
-const ballonSound = new Audio("/assets/music/Balloon.wav");
+const ballonSound = new Audio("./assets/music/Balloon.wav");
 ballonSound.volume = 0.2;
 
 export default class InputHandlder {
