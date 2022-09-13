@@ -5,7 +5,7 @@
 
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background-image: url("/assets/images/gamestart.jpg");
+  background-image: url("./assets/images/gamestart.jpg");
   background-size: cover;
   cursor: default;
 }
