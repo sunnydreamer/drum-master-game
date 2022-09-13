@@ -1,4 +1,4 @@
-<h1 align="center"><img src="./assets/images/logo.png"  height="162" /><br>GAME MASTER</h1>
+<h1 align="center"><img src="./assets/images/logo.png"  height="162" /><br>DRUM MASTER</h1>
 
 <h2 align="center">open-source web-based online rhythm game</h2>
 
