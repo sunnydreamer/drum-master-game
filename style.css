@@ -5,7 +5,7 @@
 
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background-image: url("./assets/images/gamestart.jpg");
+  background-image: url("assets/images/gamestart.jpg");
   background-size: cover;
   cursor: default;
 }
@@ -39,7 +39,7 @@ body {
 /* menu */
 .menu {
   display: none;
-  background-image: url("/assets/images/menu.png");
+  background-image: url("assets/images/menu.png");
   background-size: cover;
   position: absolute;
   width: 100%;
@@ -73,7 +73,7 @@ body {
 }
 
 .playerCard:hover {
-  background-image: url("/assets/images/playerSeclect.gif");
+  background-image: url("assets/images/playerSeclect.gif");
   background-size: cover;
   border: solid #fb0f0c 14px;
 }
