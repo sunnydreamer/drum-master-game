@@ -1,4 +1,4 @@
-import Don, { Ka, Ballon } from "/src/drums.js";
+import Don, { Ka, Ballon } from "./drums.js";
 
 const timeGenerator = (barIndex, noteIndex) => {
   let bpm = 82;
