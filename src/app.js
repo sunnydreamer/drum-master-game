@@ -1,6 +1,6 @@
-import Sensor from "/src/sensor.js";
-import InputHandlder from "/src/input.js";
-import { songs } from "/src/songs.js";
+import Sensor from "./src/sensor.js";
+import InputHandlder from "./src/input.js";
+import { songs } from "./src/songs.js";
 
 let canvas = document.getElementById("gameScreen");
 let canvas2 = document.getElementById("gameScreen2");
